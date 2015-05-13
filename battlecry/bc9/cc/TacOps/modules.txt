@@ -1,0 +1,63 @@
+*** python modules ***
+
+cc_client: interface to commandcenter
+- something to trigger the connection mechanism
+- a parser to pull out: responses, variables, rsets/notifies
+- a fn to register a callback for a variable change
+- a fn to register a callback for a rset (table from a SELECT)
+- a fn to register a callback for a notify (table)
+- obviously a way to unnotify any of these, althoug rset is one-time
+
+navigator: match navigation & display handler
+- draw match navigation buttons/etc (level choice, back/forward, etc) into
+  a container (a window or other sub-container, specified)
+- likely: a container to draw a match schedule:
+  match level/number/index, schedule time, status, teams, winner
+- in the past we had a way to go from the matchlist to be "navigated" to
+- in the past we had the ability to reschedule a match
+- possibly: a link to the finals match navigator?  or maybe a double-click
+  on a match in the matchlist pops up that nagivator
+
+display_controller:
+- somehow sends you the appropriate commands, etc. to modify current match
+  state or whatever??  in the past this was a drop-down menu
+
+game_rules: (part of game description)
+- a module which interfaces to cc_client and provides methods to quickly
+  put together the current match info (scores for each scoring element)
+- fns provided to get the bounds of matchlists (min/max match # for a
+  specified level, etc).
+- fns provided to save and load a given match
+- fn provided to score changes to a match
+
+scorecard: (also part of game description)
+- module which assembles controls into a GUI container for scoring, should
+  "look" somewhat like a score card; includes limits & groupings
+- fn called when a new match is loaded (db->gui)
+- fn to call when a match is scored (gui->rules->gui)
+- fn called when a match is saved (gui->db)
+- probably listens to certain variables which are supplied by RTS
+
+finals: handles all finals operations (alliances, rankings, promotion)
+- provides a GUI of the current rankings (auto-updated) and allows
+  movement into (& out of) alliances
+- interfaces with cc_client to save any changes into DB
+- provides colorful "ladder" navigator
+- fn to promote the winners of a match to the next level
+
+reports: handles virtually all the necessary printable/web-viewable reports
+- not a GUI module, but polls the DB for certain changes and generates the
+  necessary HTML or other format, throws files into the web directory
+
+*** other modules, optional (at this point) ***
+
+- arena/field control: uses ethernet to communicate to the stations, set
+  team numbers, start/stop matches, capture the timer, trigger the playing
+  of sounds
+
+- administrative: certain types of settings may need to be set, perform
+  certain queries (like highest rookie seed) or other commands, i.e.
+  - ? test sending of commands, like playing audio samples
+  - # finals alliances (part of game description)
+
+- match generation / scheduling

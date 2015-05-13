@@ -1,0 +1,21 @@
+CFLAGS= -g -O2 -pipe
+CFLAGS+= -I/usr/local/include -I$(PWD)/inc
+LDFLAGS= -L/usr/local/lib -lpq
+
+# .TARGET = $@
+# .ALLSRC = $^
+
+all: dbtest
+
+clean:
+	-rm -f *.o dbtest
+
+dbtest: db.o dbtest.o
+	$(CC) $(CFLAGS) $(.ALLSRC) $(LDFLAGS) -o $(.TARGET)
+
+db.o: src/common/db.c
+dbtest.o: src/test/dbtest.c
+
+# patterns
+#%.o : %.c
+#	$(CC) $(CFLAGS) -o $@ -c $<

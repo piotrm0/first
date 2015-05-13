@@ -1,0 +1,204 @@
+#
+#	makefile.kiwi - FreeBSD-specific cross-building makefile helper
+#	Project:	KIWIX library -- useful programming extensions
+#	Authors:	Rick C. Petty
+#
+# Copyright (C) 1993-2004 KIWI Computer.  All rights reserved.
+#
+# Please read the enclosed COPYRIGHT notice and LICENSE agreements, if
+# available.  All software and documentation in this file is protected
+# under applicable law as stated in the aforementioned files.  If not
+# included with this distribution, you can obtain these files, this
+# package, and source code for this and related projects from:
+#
+# http://www.kiwi-computer.com/
+#
+# $Id: makefile.kiwi,v 1.3 2004/03/15 04:17:27 rick Exp $
+#
+
+###
+###  standard variables: FreeBSD environment
+###
+CFLAGS +=	-O -pipe $(.INCLUDES)
+LDFLAGS +=	$(.LIBS)
+BIN_LDFLAGS +=
+OBJDIR ?=	$(.CURDIR)/obj
+
+###
+###  standard variables: MingW32 environment
+###
+WIN32_CC ?=		mingw32-gcc
+WIN32_DLLTOOL ?=	mingw32-dlltool
+WIN32_DLLWRAP ?=	mingw32-dllwrap
+WIN32_CFLAGS +=		-O -pipe $(.INCLUDES)
+WIN32_LDFLAGS +=	$(.LIBS) --no-undefined --mno-cygwin
+
+
+###
+###  generic build dependancies (I know, it's messy)
+###
+.if defined(SDIR)
+.PATH: $(SDIR)
+.endif
+.if defined(IDIR)
+.PATH.h: $(IDIR)
+.endif
+.for library in $(LIBRARIES)
+$(library:U)_NAME ?=	$(library)
+.if !empty($(library:U)_VERS)
+$(library:U)_VERSION =	$($(library:U)_VERS)
+.endif
+.if defined($(library:U)_SDIR)
+.PATH: $($(library:U)_SDIR)
+.else
+$(library:U)_SDIR ?=	$(SDIR)
+.endif
+.if defined($(library:U)_IDIR)
+.PATH.h: $($(library:U)_IDIR)
+.else
+$(library:U)_IDIR ?=	$(IDIR)
+.endif
+$(library:U)_DLL ?=	$($(library:U)_NAME).dll
+$(library:U)_LIB ?=	lib$($(library:U)_NAME).a
+#$(library:U)_SHLIB ?=	lib$($(library:U)_NAME)$($(library:U)_VERSION).so
+$(library:U)_SHLIB ?=	lib$($(library:U)_NAME)-$($(library:U)_VERSION).so.0
+$(library:U)_SOLIB =	lib$($(library:U)_NAME).so
+.if !empty($(library:U)_LIB) && empty($(library:U)_DLL)
+LIBRARY_TARGETS +=	$($(library:U)_LIB)
+$($(library:U)_LIB): $($(library:U)_SRCS:N*.h:R:S/$/.lo/g) 
+	@$(ECHO) building static $(library) library: $(.TARGET)
+	@$(AR) cq $(.TARGET) `lorder $(.ALLSRC) | tsort -q` $(ARADD)
+	$(RANLIB) $(.TARGET)
+.endif
+.if !empty($(library:U)_SHLIB)
+LIBRARY_TARGETS +=	$($(library:U)_SHLIB)
+.if !empty($(library:U)_SOLIB)
+LIBRARY_LINKS +=	$($(library:U)_SOLIB)
+.endif
+$($(library:U)_SHLIB): $($(library:U)_SRCS:N*.h:R:S/$/.So/g)
+	@$(ECHO) building shared $(library) library: $(.TARGET)
+	@rm -f $($(library:U)_SOLIB)
+.if !empty($(library:U)_SOLIB)
+	@ln -fs $(.TARGET) $($(library:U)_SOLIB)
+.endif
+	@$(CC) $(LDFLAGS) -shared -Wl,-x -o $(.TARGET) \
+		-Wl,-soname,$(.TARGET) `lorder $(.ALLSRC) | tsort -q` \
+		$(LDADD)
+.endif
+.if !defined(NO_WIN32)
+.if !empty($(library:U)_DLL)
+LIBRARY_TARGETS +=	$($(library:U)_DLL)
+$($(library:U)_DLL): $($(library:U)_SRCS:N*.h:R:S/$/.wo/g)
+	@$(ECHO) building $(library) DLL: $(.TARGET)
+	$(WIN32_DLLTOOL) --export-all --output-def $(.TARGET:R:S/$/.def/) \
+		$(.ALLSRC)
+	$(WIN32_DLLWRAP) --def $(.TARGET:R:S/$/.def/) -o $(.TARGET) \
+		$(.ALLSRC) $(WIN32_LDFLAGS)
+.endif
+.endif !NO_WIN32
+.endfor
+.for binary in $(BINARIES)
+$(binary:U)_NAME ?=	$(binary)
+.if defined($(binary:U)_SDIR)
+.PATH: $($(binary:U)_SDIR)
+.else
+$(binary:U)_SDIR ?=	$(SDIR)
+.endif
+.if defined($(binary:U)_IDIR)
+.PATH.h: $($(binary:U)_IDIR)
+.else
+$(binary:U)_IDIR ?=	$(IDIR)
+.endif
+$(binary:U)_SRCS ?=	$($(binary:U)_NAME).c
+BINARY_TARGETS +=	$($(binary:U)_NAME)
+.if defined(NO_COMPILE)
+$($(binary:U)_NAME):
+	touch $(.TARGET)
+.else
+$($(binary:U)_NAME): $($(binary:U)_SRCS:N*.h:R:S/$/.o/g)
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $(.TARGET) $(.ALLSRC) \
+		$($(binary:U)_LDFLAGS) $(BIN_LDFLAGS) $(LDADD)
+.endif
+.if !defined(NO_WIN32)
+BINARY_TARGETS +=	$($(binary:U)_NAME).exe
+$($(binary:U)_NAME).exe: $($(binary:U)_SRCS:N*.h:R:S/$/.wo/g)
+	$(WIN32_CC) $(WIN32_CFLAGS) $(.ALLSRC) -o $(.TARGET) \
+		$($(binary:U)_WIN32_LDFLAGS) $(BIN_LDFLAGS) $(WIN32_LDFLAGS)
+.endif # !NO_WIN32
+.endfor
+
+###  This must appear after all the build dependancies above!
+TARGETS :=	$(LIBRARY_TARGETS) $(BINARY_TARGETS)
+
+###
+###  useful rules
+###
+.SUFFIXES: .h .c .lo .o .So .wo .dll
+.INCLUDES: .h
+.LIBS: .a .dll .so
+.PATH.a: . $(.OBJDIR)
+.PATH.dll: . $(.OBJDIR)
+.c.lo:
+	$(CC) $(CFLAGS) -c $(.IMPSRC) -o $(.TARGET)
+	@$(LD) -o $(.TARGET).tmp -X -r $(.TARGET)
+	@mv $(.TARGET).tmp $(.TARGET)
+.c.o:
+	$(CC) $(CFLAGS) -c $(.IMPSRC) -o $(.TARGET)
+.c.So:
+	$(CC) -fpic -DPIC $(CFLAGS) -c $(.IMPSRC) -o $(.TARGET)
+	@$(LD) $(LDFLAGS) -o $(.TARGET).tmp -x -r $(.TARGET)
+	@mv $(.TARGET).tmp $(.TARGET)
+.c.wo:
+	$(WIN32_CC) $(WIN32_CFLAGS) -c $(.IMPSRC) -o $(.TARGET)
+
+###
+###  helpful targets
+###
+.MAIN:	build
+.if !exists($(.OBJDIR)) || $(.OBJDIR) == $(.CURDIR)
+default: $(OBJDIR)
+all: $(OBJDIR)
+build: $(OBJDIR)
+obj $(OBJDIR):
+	mkdir -p $(OBJDIR)
+	@$(MAKE) $(.MAKEFLAGS) $(.TARGETS)
+.else # !objdir
+build: $(TARGETS)
+clean:
+	@echo Removing object directory: $(.OBJDIR)
+	@cd $(.CURDIR); rm -rf $(OBJDIR)
+default: $(TARGETS)
+install: $(TARGETS)
+.if defined(PREFIX) && defined(BSD_INSTALL_PROGRAM)
+.for library in $(LIBRARIES)
+.if defined($(library:U)_INCS)
+.for include in $($(library:U)_INCS)
+	@mkdir -p `dirname $(PREFIX)/include/$(include)`
+	$(BSD_INSTALL_DATA) $($(library:U)_IDIR)/$(include) \
+		$(PREFIX)/include/$(include)
+.endfor include
+.endif # !defined($(library)_INCS)
+.endfor library
+.for library in $(LIBRARY_TARGETS:N*.dll)
+	@mkdir -p $(PREFIX)/lib
+	$(BSD_INSTALL_PROGRAM) $(library) $(PREFIX)/lib/
+.endfor library
+.for library in $(LIBRARY_TARGETS:N*.so)
+	@mkdir -p $(PREFIX)/lib
+	$(BSD_INSTALL_PROGRAM) $(library) $(PREFIX)/lib/
+.endfor library
+.for library in $(LIBRARIES)
+.if !empty($(library:U)_SHLIB) && !empty($(library:U)_SOLIB)
+	@cd $(PREFIX)/lib; ln -fs $($(library:U)_SHLIB) $($(library:U)_SOLIB)
+.endif
+.endfor library
+.for binary in $(BINARY_TARGETS:N*.exe)
+	@mkdir -p $(PREFIX)/bin
+.if defined(NO_COMPILE)
+	cp $(binary) $(PREFIX)/bin/
+.else
+	$(BSD_INSTALL_PROGRAM) $(binary) $(PREFIX)/bin/
+.endif
+.endfor binary
+.endif # defined(PREFIX)
+.endif # !objdir

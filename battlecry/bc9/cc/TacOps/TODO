@@ -1,0 +1,84 @@
+DONE:
++ when match starts, go instantly to "show current match"
++ always enable save scores
++ test web_results, write matches code
++ finals match navigator enable/disable
++ test finals ladder matches propagation
++ fix rankings (saved RPs)
+
+
+CRITICAL:
+
+15m - call update ladder on: score save, initial load
+- fix current-match, nav-match problem
+	"show score for the last scored match"
+
+
+REQUIRED:
+
+- (??) "ping" cmd: determine
+- make send work as non-admin (what default prefix?  "MSG")
+- RTS wrapper: send ENABLE/START, CLEAR/RESET
+- reports
+- ? add display commands (show: match, results, rankings, pairings, ladder,
+	empty, logo-game, technical, version, ...)
+- ? add arena commands (init, play, r/w, version, probe, ident, status,
+	ondeck, clock, start, stop, enable/disable)
+
+KNOWN BUGS:
+
+- "who" list != "ls" list
+- multi-query sql on same line != different lines (begin...)
+- dB locked on Recv.
+- why DB locked/in-use if conn. dropped
+
+DESIRED:
+
+- (high) kill/release db connection forcibly
+- (high) gui: add not-connected callback
+- (med) gui: import teams, matchlists (full vs. ondeck)
+- (med) gui: fix/reorder nav bar
+- (???) gui: add "save scores & show results" w/ auto-nav to next match
+- (low) disable navigation when match unscored
+- (low) enable finals alliance drag/drop
+- (low) move cc_sys to cc_db
+- (low) remove static tables in db (populate)
+- (med) fix history show to merge control chars
+- (high) add tracing: (id | "off") arena, display, sql, cmds, responses;
+  add to connection_t: bool has_tracers; trace[]: fd who, str fmt, int flags
+- (med) add "su" as (add "effective_id" fd to connection_t)
+- (med) for watch/notify: check for changes to rsets & only send if changed
+- add semicolon processing of commands; ensure the c->db isn't released
+  between successive sql commands ?
+- (low) add CREATE/DROP as admin
+- (low) add commandline processing
+- (low) add MORE (automatic) wrapper
+- add arena handler
+- (low) add password protection?
+- (low) add "unnotify all" command that relistens to everything
+- (low) add buffer_recycle & cmd to trigger
+- (low) switch from select to poll
+- (low) split server.c
+- (???) check multiple rules on table/view: do they override notify's?
+- (med) add copyin/replace (store?) into command
+
+COSMETIC
+- (med) fix wrap: if line < maxWidth, doesn't handle newlines, etc.
+- (med) fix wrap: lmargin broken
+- (low) fix handling of multiple spaces which end a line (with wrap)
+
+NOT LIKELY TO HAPPEN
+- remove casting for command_sjoin()
+- implement sorting in "who" command
+- receive terminal type subnegotiation
+- handle telnet ctrl characters:
+  ^Z (susp)	IAC SUSP IAC DO TELOPT_TM
+  ^E (status)	IAC AYT
+  ^U (kill)	IAC AYT
+  ^C (intr)	IAC IP IAC DOTELOPT_TM
+  ^D (eof)	^D
+  ^\ (quit)	IAC BREAK IAC DO TELOPT_TM
+- add event preference get/set commands
+- add localization
+- add recv command
+- automate notify rule adding?

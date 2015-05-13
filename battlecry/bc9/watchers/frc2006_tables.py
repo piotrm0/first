@@ -1,0 +1,90 @@
+#!/usr/bin/env python
+
+##  colors
+COLOR_NONE = 0;
+COLOR_RED = 1;
+COLOR_BLUE = 2;
+
+COLORS = [COLOR_RED, COLOR_BLUE];
+
+COLORS_NAMES = {};
+COLORS_NAMES[COLOR_NONE] = "";
+COLORS_NAMES[COLOR_RED] = "Red";
+COLORS_NAMES[COLOR_BLUE] = "Blue";
+
+COLORS_RGB = {};
+COLORS_RGB[COLOR_NONE] = (0x00, 0x00, 0x00);
+COLORS_RGB[COLOR_RED] = (0xFF, 0x00, 0x00);
+COLORS_RGB[COLOR_BLUE] = (0x00, 0x00, 0xFF);
+
+def color2hex(rgb_triple):
+    return ''.join(map(chr, rgb_triple)).encode("hex_codec");
+
+
+##  match_levels
+LEVEL_PRAC = -1;
+LEVEL_QUAL = 0;
+LEVEL_EF = 1;
+LEVEL_QF = 2;
+LEVEL_SF = 3;
+LEVEL_F = 4;
+
+LEVEL_NAMES = {};
+LEVEL_NAMES[LEVEL_PRAC] = ("P", "Practice");
+LEVEL_NAMES[LEVEL_QUAL] = ("Q", "Qualification");
+LEVEL_NAMES[LEVEL_EF] = ("EF", "Eighth-Final");
+LEVEL_NAMES[LEVEL_QF] = ("QF", "Quarter-Final");
+LEVEL_NAMES[LEVEL_SF] = ("SF", "Semi-Final");
+LEVEL_NAMES[LEVEL_F] = ("F", "Final");
+
+LEVEL_INDEX_RANGES = {}
+for level in [LEVEL_PRAC, LEVEL_QUAL, LEVEL_F]:
+    LEVEL_INDEX_RANGES[level] = (0, 0);
+for level in [LEVEL_EF, LEVEL_QF, LEVEL_SF]:
+    LEVEL_INDEX_RANGES[level] = (1, 3);
+LEVEL_DEFAULT = LEVEL_PRAC;
+
+
+##  match_statuses
+STATUS_NONE = 0;
+STATUS_SCHED = 1;
+STATUS_RESCHED = 2;
+STATUS_PLAYED = 3;
+STATUS_SCORED = 4;
+STATUS_NEVER = 9;
+
+STATUS_TEXTS = {};
+STATUS_TEXTS[STATUS_NONE] = "No status";
+STATUS_TEXTS[STATUS_SCHED] = "Not played";
+STATUS_TEXTS[STATUS_RESCHED] = "Rescheduled";
+STATUS_TEXTS[STATUS_PLAYED] = "Played, unscored";
+STATUS_TEXTS[STATUS_SCORED] = "Scored";
+STATUS_TEXTS[STATUS_NEVER] = "[invalid match]";
+
+
+##  score_attributes
+SCORE_UNKNOWN = 0;
+SCORE_PENALTY = 1;
+SCORE_ROBOTS = 11;
+SCORE_AUTON_BONUS = 240;
+SCORE_TOGGLE_BONUS = 241;
+SCORE_FAR_GOAL = 249;
+SCORE_CENTER_GOAL = 250;
+SCORE_NEAR_GOAL = 251;
+
+SCORES = [SCORE_PENALTY, SCORE_ROBOTS, SCORE_AUTON_BONUS, SCORE_TOGGLE_BONUS,
+	  SCORE_FAR_GOAL, SCORE_CENTER_GOAL, SCORE_NEAR_GOAL];
+
+##  alliance_team flags
+FLAG_NONE = 0;
+FLAG_DQ = 1;
+FLAG_DONT_COUNT = 2;
+
+
+POSITIONS = range(1, 4);
+
+FINALS_ALLIANCE_TEAMS = 3;
+FINALS_ALLIANCES = 16;
+
+RANKINGS_TEAM_COLUMN = 0;	# column in view (starting from 0)
+RANKINGS_TEAMNAME_COLUMN = 8;	# ditto

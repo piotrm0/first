@@ -1,0 +1,102 @@
+#!/usr/bin/env python
+
+import random
+import sys
+import select
+import cc_client
+from hosts import *
+
+import debug_util; debug_util.debug = 1
+
+COLOR_MAP = ["red", "blue"]
+OPT_MAP   = ['center', 'far', 'near']
+MULT_MAP  = [3,        1,      1]
+
+SCORE = [[0,0,0],
+         [0,0,0]]
+SCORE_TOT = [0,0]
+
+class rts_compute:
+    def on_score(self, key, old_val, new_val, c, o):
+        print "got %s=%s (color=%s, opt=%s)" % (key, new_val, c, o)
+        SCORE[c][o] = int(new_val)
+        self.compute()
+
+    def winner(self):
+        if SCORE_TOT[0] > SCORE_TOT[1]:
+            return COLOR_MAP[0]
+        elif SCORE_TOT[1] > SCORE_TOT[0]:
+            return COLOR_MAP[1]
+        return COLOR_MAP[int(random.random() * 2)]
+
+    def on_match(self, key, old_val, new_val):
+        if new_val == "reset":
+            self.cc.command("ENV autonomous_winner=")
+        if new_val != "paused":
+            self.finished = 0
+        else:
+            self.finished = 1
+            self.win = self.winner()
+            self.notify_winner()
+        
+    def notify_winner(self):
+        if self.submitted and self.finished:
+            self.cc.command("ENV autonomous_winner=%s" % (self.win))
+
+    def on_status(self, key, old_val, new_val):
+        if new_val == "1":
+            self.submitted = 1
+            self.win = self.winner()
+            self.notify_winner()
+        else:
+            self.submitted = 0
+
+    def compute(self):
+        for c in range(len(COLOR_MAP)):
+            temp = 0
+            for o in range(len(OPT_MAP)):
+                temp += SCORE[c][o] * MULT_MAP[o]
+#            print "score for %s is %s" % (c, temp)
+            if SCORE_TOT[c] != temp:
+                SCORE_TOT[c] = temp
+#                print "is new, notifying"
+                self.cc.command("ENV %s_score=%s" % (COLOR_MAP[c], temp))
+            else:
+                pass
+#                print "was old"
+
+    def main(self):
+        self.win = ""
+        self.finished = 0
+        self.submitted = 0
+
+        self.cc = cc_client.cc_client('rts_compute')
+        self.cc.connect(HOST_CCENTER)
+
+        self.cc.env_watch("match_state", self.on_match)
+        self.cc.env_watch("all_submitted", self.on_status)
+
+        for c in range(len(COLOR_MAP)):
+            for o in range(len(OPT_MAP)):
+                self.cc.env_watch("%s_%s" % (COLOR_MAP[c], OPT_MAP[o]),
+                                  self.on_score, c, o);
+
+        while True:
+            reads = [self.cc.net.sock]
+            writes = []
+
+            if self.cc.net.need_write():
+                writes.append(self.cc.net.sock)
+
+            (can_read, can_write, other) = select.select(reads, writes, [])
+
+            for handle in can_read:
+                if handle == self.cc.net.sock:
+                    self.cc.net.sock_recv()
+
+            for handle in can_write:
+                if handle == self.cc.net.sock:
+                    self.cc.net.sock_send()
+
+computer = rts_compute()
+computer.main()

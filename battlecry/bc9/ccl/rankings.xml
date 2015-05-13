@@ -1,0 +1,386 @@
+<Rankings>
+ <Team>
+  <Rank>1</Rank>
+  <TeamNumber>1519</TeamNumber>
+  <TeamName>BAE & Rockwell MAYHEM</TeamName>
+  <WLT>6-0-1</WLT>
+  <AverageQP>1.86</AverageQP>
+  <AverageRP>25.57</AverageRP>
+ </Team>
+ <Team>
+  <Rank>2</Rank>
+  <TeamNumber>121</TeamNumber>
+  <TeamName>Rhode Warriors/NUWC</TeamName>
+  <WLT>6-1-0</WLT>
+  <AverageQP>1.71</AverageQP>
+  <AverageRP>31.71</AverageRP>
+ </Team>
+ <Team>
+  <Rank>3</Rank>
+  <TeamNumber>126</TeamNumber>
+  <TeamName>NYPRO & Clinton HS</TeamName>
+  <WLT>6-1-0</WLT>
+  <AverageQP>1.71</AverageQP>
+  <AverageRP>30.57</AverageRP>
+ </Team>
+ <Team>
+  <Rank>4</Rank>
+  <TeamNumber>125</TeamNumber>
+  <TeamName>NU-TRONS</TeamName>
+  <WLT>6-1-0</WLT>
+  <AverageQP>1.71</AverageQP>
+  <AverageRP>18.29</AverageRP>
+ </Team>
+ <Team>
+  <Rank>5</Rank>
+  <TeamNumber>177</TeamNumber>
+  <TeamName>UTC Power & SWHS</TeamName>
+  <WLT>4-1-0</WLT>
+  <AverageQP>1.60</AverageQP>
+  <AverageRP>15.80</AverageRP>
+ </Team>
+ <Team>
+  <Rank>6</Rank>
+  <TeamNumber>40</TeamNumber>
+  <TeamName>Trinity   </TeamName>
+  <WLT>5-2-0</WLT>
+  <AverageQP>1.43</AverageQP>
+  <AverageRP>24.43</AverageRP>
+ </Team>
+ <Team>
+  <Rank>7</Rank>
+  <TeamNumber>467</TeamNumber>
+  <TeamName>Intel & Shrewsbury</TeamName>
+  <WLT>5-2-0</WLT>
+  <AverageQP>1.43</AverageQP>
+  <AverageRP>18.71</AverageRP>
+ </Team>
+ <Team>
+  <Rank>8</Rank>
+  <TeamNumber>348</TeamNumber>
+  <TeamName>PIAB,MBE & Norwell HS</TeamName>
+  <WLT>5-2-0</WLT>
+  <AverageQP>1.43</AverageQP>
+  <AverageRP>18.43</AverageRP>
+ </Team>
+ <Team>
+  <Rank>9</Rank>
+  <TeamNumber>1733</TeamNumber>
+  <TeamName>North High School</TeamName>
+  <WLT>5-2-0</WLT>
+  <AverageQP>1.43</AverageQP>
+  <AverageRP>18.29</AverageRP>
+ </Team>
+ <Team>
+  <Rank>10</Rank>
+  <TeamNumber>271</TeamNumber>
+  <TeamName>Mechanical Marauders</TeamName>
+  <WLT>5-2-0</WLT>
+  <AverageQP>1.43</AverageQP>
+  <AverageRP>13.71</AverageRP>
+ </Team>
+ <Team>
+  <Rank>11</Rank>
+  <TeamNumber>1126</TeamNumber>
+  <TeamName>Xerox & Webster HS</TeamName>
+  <WLT>5-2-0</WLT>
+  <AverageQP>1.43</AverageQP>
+  <AverageRP>11.43</AverageRP>
+ </Team>
+ <Team>
+  <Rank>12</Rank>
+  <TeamNumber>190</TeamNumber>
+  <TeamName>WPI & Mass Academy</TeamName>
+  <WLT>4-2-1</WLT>
+  <AverageQP>1.29</AverageQP>
+  <AverageRP>12.71</AverageRP>
+ </Team>
+ <Team>
+  <Rank>13</Rank>
+  <TeamNumber>88</TeamNumber>
+  <TeamName>DePuy / BRRHS</TeamName>
+  <WLT>3-2-0</WLT>
+  <AverageQP>1.20</AverageQP>
+  <AverageRP>23.80</AverageRP>
+ </Team>
+ <Team>
+  <Rank>14</Rank>
+  <TeamNumber>1027</TeamNumber>
+  <TeamName>ITT &  WSHS</TeamName>
+  <WLT>3-2-0</WLT>
+  <AverageQP>1.20</AverageQP>
+  <AverageRP>18.00</AverageRP>
+ </Team>
+ <Team>
+  <Rank>15</Rank>
+  <TeamNumber>809</TeamNumber>
+  <TeamName>Cheney Tech</TeamName>
+  <WLT>4-3-0</WLT>
+  <AverageQP>1.14</AverageQP>
+  <AverageRP>19.57</AverageRP>
+ </Team>
+ <Team>
+  <Rank>16</Rank>
+  <TeamNumber>571</TeamNumber>
+  <TeamName>UTC Team Paragon</TeamName>
+  <WLT>4-3-0</WLT>
+  <AverageQP>1.14</AverageQP>
+  <AverageRP>19.14</AverageRP>
+ </Team>
+ <Team>
+  <Rank>17</Rank>
+  <TeamNumber>1307</TeamNumber>
+  <TeamName>St. Thomas Aquinas</TeamName>
+  <WLT>4-3-0</WLT>
+  <AverageQP>1.14</AverageQP>
+  <AverageRP>16.86</AverageRP>
+ </Team>
+ <Team>
+  <Rank>18</Rank>
+  <TeamNumber>1276</TeamNumber>
+  <TeamName>Kaizen Blitz</TeamName>
+  <WLT>4-3-0</WLT>
+  <AverageQP>1.14</AverageQP>
+  <AverageRP>16.00</AverageRP>
+ </Team>
+ <Team>
+  <Rank>19</Rank>
+  <TeamNumber>228</TeamNumber>
+  <TeamName>BMS&GUS</TeamName>
+  <WLT>3-3-1</WLT>
+  <AverageQP>1.00</AverageQP>
+  <AverageRP>24.86</AverageRP>
+ </Team>
+ <Team>
+  <Rank>20</Rank>
+  <TeamNumber>234</TeamNumber>
+  <TeamName>Team Cyber Blue</TeamName>
+  <WLT>3-3-1</WLT>
+  <AverageQP>1.00</AverageQP>
+  <AverageRP>24.71</AverageRP>
+ </Team>
+ <Team>
+  <Rank>21</Rank>
+  <TeamNumber>175</TeamNumber>
+  <TeamName>UTC/HamSund & FermiHS</TeamName>
+  <WLT>3-4-0</WLT>
+  <AverageQP>0.86</AverageQP>
+  <AverageRP>27.00</AverageRP>
+ </Team>
+ <Team>
+  <Rank>22</Rank>
+  <TeamNumber>1100</TeamNumber>
+  <TeamName>Rohm and Haas & ARHS</TeamName>
+  <WLT>3-4-0</WLT>
+  <AverageQP>0.86</AverageQP>
+  <AverageRP>22.57</AverageRP>
+ </Team>
+ <Team>
+  <Rank>23</Rank>
+  <TeamNumber>1103</TeamNumber>
+  <TeamName>Delavan Darien HS</TeamName>
+  <WLT>3-4-0</WLT>
+  <AverageQP>0.86</AverageQP>
+  <AverageRP>22.43</AverageRP>
+ </Team>
+ <Team>
+  <Rank>24</Rank>
+  <TeamNumber>1474</TeamNumber>
+  <TeamName>Tewksbury Titans</TeamName>
+  <WLT>3-4-0</WLT>
+  <AverageQP>0.86</AverageQP>
+  <AverageRP>21.86</AverageRP>
+ </Team>
+ <Team>
+  <Rank>25</Rank>
+  <TeamNumber>811</TeamNumber>
+  <TeamName>Bishop Guertin HS</TeamName>
+  <WLT>3-4-0</WLT>
+  <AverageQP>0.86</AverageQP>
+  <AverageRP>20.43</AverageRP>
+ </Team>
+ <Team>
+  <Rank>26</Rank>
+  <TeamNumber>246</TeamNumber>
+  <TeamName>Boston University</TeamName>
+  <WLT>3-4-0</WLT>
+  <AverageQP>0.86</AverageQP>
+  <AverageRP>20.14</AverageRP>
+ </Team>
+ <Team>
+  <Rank>27</Rank>
+  <TeamNumber>131</TeamNumber>
+  <TeamName>ActiveShockBAECentral</TeamName>
+  <WLT>3-4-0</WLT>
+  <AverageQP>0.86</AverageQP>
+  <AverageRP>19.43</AverageRP>
+ </Team>
+ <Team>
+  <Rank>28</Rank>
+  <TeamNumber>1685</TeamNumber>
+  <TeamName>Tech-Know Commandos</TeamName>
+  <WLT>3-4-0</WLT>
+  <AverageQP>0.86</AverageQP>
+  <AverageRP>18.43</AverageRP>
+ </Team>
+ <Team>
+  <Rank>29</Rank>
+  <TeamNumber>238</TeamNumber>
+  <TeamName>MMHS</TeamName>
+  <WLT>3-4-0</WLT>
+  <AverageQP>0.86</AverageQP>
+  <AverageRP>18.43</AverageRP>
+ </Team>
+ <Team>
+  <Rank>30</Rank>
+  <TeamNumber>166</TeamNumber>
+  <TeamName>BAE & Merrimack HS</TeamName>
+  <WLT>3-4-0</WLT>
+  <AverageQP>0.86</AverageQP>
+  <AverageRP>18.29</AverageRP>
+ </Team>
+ <Team>
+  <Rank>31</Rank>
+  <TeamNumber>151</TeamNumber>
+  <TeamName>BAE SYSTEMS&Nashua HS</TeamName>
+  <WLT>3-4-0</WLT>
+  <AverageQP>0.86</AverageQP>
+  <AverageRP>18.14</AverageRP>
+ </Team>
+ <Team>
+  <Rank>32</Rank>
+  <TeamNumber>157</TeamNumber>
+  <TeamName>AZTECHS Team 157</TeamName>
+  <WLT>3-4-0</WLT>
+  <AverageQP>0.86</AverageQP>
+  <AverageRP>16.14</AverageRP>
+ </Team>
+ <Team>
+  <Rank>33</Rank>
+  <TeamNumber>663</TeamNumber>
+  <TeamName>WCS Robonauts</TeamName>
+  <WLT>3-4-0</WLT>
+  <AverageQP>0.86</AverageQP>
+  <AverageRP>15.57</AverageRP>
+ </Team>
+ <Team>
+  <Rank>34</Rank>
+  <TeamNumber>1725</TeamNumber>
+  <TeamName>Kamiak</TeamName>
+  <WLT>2-3-0</WLT>
+  <AverageQP>0.80</AverageQP>
+  <AverageRP>21.20</AverageRP>
+ </Team>
+ <Team>
+  <Rank>35</Rank>
+  <TeamNumber>1124</TeamNumber>
+  <TeamName>UTCF&S & Avon HS</TeamName>
+  <WLT>2-3-0</WLT>
+  <AverageQP>0.80</AverageQP>
+  <AverageRP>20.60</AverageRP>
+ </Team>
+ <Team>
+  <Rank>36</Rank>
+  <TeamNumber>839</TeamNumber>
+  <TeamName>Agawam High School</TeamName>
+  <WLT>2-3-0</WLT>
+  <AverageQP>0.80</AverageQP>
+  <AverageRP>17.20</AverageRP>
+ </Team>
+ <Team>
+  <Rank>37</Rank>
+  <TeamNumber>562</TeamNumber>
+  <TeamName>Monty Tech</TeamName>
+  <WLT>2-3-0</WLT>
+  <AverageQP>0.80</AverageQP>
+  <AverageRP>12.00</AverageRP>
+ </Team>
+ <Team>
+  <Rank>38</Rank>
+  <TeamNumber>1058</TeamNumber>
+  <TeamName>LHS PVC Pirates</TeamName>
+  <WLT>2-5-0</WLT>
+  <AverageQP>0.57</AverageQP>
+  <AverageRP>24.00</AverageRP>
+ </Team>
+ <Team>
+  <Rank>39</Rank>
+  <TeamNumber>195</TeamNumber>
+  <TeamName>Smiths/Southington HS</TeamName>
+  <WLT>2-5-0</WLT>
+  <AverageQP>0.57</AverageQP>
+  <AverageRP>20.57</AverageRP>
+ </Team>
+ <Team>
+  <Rank>40</Rank>
+  <TeamNumber>176</TeamNumber>
+  <TeamName>UTC/HamSund WL & Suff</TeamName>
+  <WLT>2-5-0</WLT>
+  <AverageQP>0.57</AverageQP>
+  <AverageRP>19.71</AverageRP>
+ </Team>
+ <Team>
+  <Rank>41</Rank>
+  <TeamNumber>181</TeamNumber>
+  <TeamName>UTC-PrtWht&Hartford</TeamName>
+  <WLT>2-5-0</WLT>
+  <AverageQP>0.57</AverageQP>
+  <AverageRP>19.14</AverageRP>
+ </Team>
+ <Team>
+  <Rank>42</Rank>
+  <TeamNumber>1405</TeamNumber>
+  <TeamName>Falcons Robotics</TeamName>
+  <WLT>2-5-0</WLT>
+  <AverageQP>0.57</AverageQP>
+  <AverageRP>18.86</AverageRP>
+ </Team>
+ <Team>
+  <Rank>43</Rank>
+  <TeamNumber>237</TeamNumber>
+  <TeamName>Sie-H2O-Bots Siehobot</TeamName>
+  <WLT>2-5-0</WLT>
+  <AverageQP>0.57</AverageQP>
+  <AverageRP>18.29</AverageRP>
+ </Team>
+ <Team>
+  <Rank>44</Rank>
+  <TeamNumber>350</TeamNumber>
+  <TeamName>Timberlane </TeamName>
+  <WLT>2-5-0</WLT>
+  <AverageQP>0.57</AverageQP>
+  <AverageRP>16.71</AverageRP>
+ </Team>
+ <Team>
+  <Rank>45</Rank>
+  <TeamNumber>1289</TeamNumber>
+  <TeamName>Gearheadz-LHS</TeamName>
+  <WLT>2-5-0</WLT>
+  <AverageQP>0.57</AverageQP>
+  <AverageRP>16.71</AverageRP>
+ </Team>
+ <Team>
+  <Rank>46</Rank>
+  <TeamNumber>1735</TeamNumber>
+  <TeamName>WPI / Burncoat H.S.</TeamName>
+  <WLT>1-5-1</WLT>
+  <AverageQP>0.43</AverageQP>
+  <AverageRP>25.29</AverageRP>
+ </Team>
+ <Team>
+  <Rank>47</Rank>
+  <TeamNumber>173</TeamNumber>
+  <TeamName>UTRC,EHHS,RHS,MHS&THS</TeamName>
+  <WLT>1-5-1</WLT>
+  <AverageQP>0.43</AverageQP>
+  <AverageRP>18.57</AverageRP>
+ </Team>
+ <Team>
+  <Rank>48</Rank>
+  <TeamNumber>230</TeamNumber>
+  <TeamName>UTC/PB/OEM/UNLVR/SHS</TeamName>
+  <WLT>1-4-0</WLT>
+  <AverageQP>0.40</AverageQP>
+  <AverageRP>14.80</AverageRP>
+ </Team>
+</Rankings>

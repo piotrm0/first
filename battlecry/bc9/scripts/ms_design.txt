@@ -1,0 +1,65 @@
+#CREATE TABLE game_match (
+#    match_level smallint NOT NULL,
+#    match_number smallint NOT NULL,   # -1 = practice, 0 = qualification,
+                                       #  1 = eight-final, 2 = quarter-final, 3 = semi-final, 4 = final
+#    match_index smallint NOT NULL,
+#    status_id smallint,
+#    time_scheduled timestamp without time zone,
+#    winner_color_id smallint DEFAULT 0 NOT NULL
+#    );
+
+#CREATE TABLE alliance_team (
+#    match_level smallint NOT NULL,
+#    match_number smallint NOT NULL,
+#    match_index smallint NOT NULL,
+#    alliance_color_id smallint NOT NULL,
+#    "position" smallint DEFAULT 0 NOT NULL,
+#    team_number integer,
+#    flags integer DEFAULT 0,
+#    score integer DEFAULT 0,
+#    points integer DEFAULT 0
+#    );
+
+#CREATE TABLE [dbo].[ScheduleDetail](
+#    [EventID] [int] NOT NULL,
+#    [ScheduleID] [int] NOT NULL,
+#    [Description] [nvarchar](50) NOT NULL,
+#    [StartTime] [datetime] NULL,
+#    [EndTime] [datetime] NULL,
+#    [TornamentLevel] [int] NULL,
+
+#CREATE TABLE [dbo].[Match](
+#    [MatchID] [int] NOT NULL,
+#    [EventID] [int] NOT NULL,
+#    [ScheduleID] [int] NULL,
+#    [TournamentLevel] [int] NOT NULL,    # 1 = practice, 2 = qualification, 3 = elimination
+#    [MatchStatus] [char](15) NOT NULL,   # NotStarted, Complete, Cancelled
+#    [RedTeam1ID] [int] NULL,
+#    [RedTeam1Ready] [bit] NULL,
+#    [RedTeam1Bypass] [bit] NULL,
+#    [RedTeam1Disable] [bit] NULL,
+#    [RedTeam2ID] [int] NULL,
+#    [RedTeam2Ready] [bit] NULL,
+#    [RedTeam2Bypass] [bit] NULL,
+#    [RedTeam2Disable] [bit] NULL,
+#    [RedTeam3ID] [int] NULL,
+#    [RedTeam3Ready] [bit] NULL,
+#    [RedTeam3Bypass] [bit] NULL,
+#    [RedTeam3Disable] [bit] NULL,
+#    [BlueTeam1ID] [int] NULL,
+#    [BlueTeam1Ready] [bit] NULL,
+#    [BlueTeam1Bypass] [bit] NULL,
+#    [BlueTeam1Disable] [bit] NULL,
+#    [BlueTeam2ID] [int] NULL,
+#    [BlueTeam2Ready] [bit] NULL,
+#    [BlueTeam2Bypass] [bit] NULL,
+#    [BlueTeam2Disable] [bit] NULL,
+#    [BlueTeam3ID] [int] NULL,
+#    [BlueTeam3Ready] [bit] NULL,
+#    [BlueTeam3Bypass] [bit] NULL,
+#    [BlueTeam3Disable] [bit] NULL,
+#    [RedScore] [int] NULL,
+#    [BlueScore] [int] NULL,
+#    [AutoWinner] [char](10) NULL,    # Red, Blue, Tie
+#    [Winner] [char](10) NULL,        # Red, Blue, Tie
+

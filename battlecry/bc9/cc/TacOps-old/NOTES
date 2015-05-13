@@ -1,0 +1,18 @@
+PACKAGING
+
+- live CD ?
+  - setup: X, db, inet
+  - rm unneeded files
+
+REQUIRED PACKAGES
+
+- openvpn, rsync, trafshow, pkg_cutleaves
+- Xorg, rxvt
+- emacs, ethereal, gcalctool
+- apache, postgres 8.1+, pgadmin3
+- python, pygtk
+- gtk-milk-theme
+- diablo 1.5, eclipse, viplugin
+- linux_base, flash
+- firefox, gnumeric, xmms,
+- gs, html2ps-letter, gv. dia
